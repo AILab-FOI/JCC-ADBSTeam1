@@ -49,7 +49,10 @@ function SingleProperty() {
                                 <ListGroup.Item>{"Phone number: " + property.phone_number}</ListGroup.Item>
                             </ListGroup>
                         </Card.Text>
-                        <Card.Link>
+                        <Card.Link onClick={(event) => {
+                            window.location.href = `mailto:${property.email}`
+                            event.preventDefaut();
+                        }}>
                             Send request
                         </Card.Link>
                     </Card.Body>
