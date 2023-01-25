@@ -19,6 +19,7 @@ function Header() {
             alignItems: "center"
         }
     }
+    const user = useContext(UserContext);
 
     let navigate = useNavigate();
 
@@ -29,6 +30,10 @@ function Header() {
     function pushToContract() {
         navigate("/tenant/contracts/");
     }
+    function pushToRents() {
+        navigate(`/tenant/rents/`);
+    }
+
 
     if(userState.user === "") {
         return (
@@ -63,10 +68,8 @@ function Header() {
                                     onClick={pushToContract}>
                                         Contracts
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item>
-                                        Utilities
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item
+                                    onClick={pushToRents}>
                                         Rent reports
                                     </NavDropdown.Item>
                                 </NavDropdown>

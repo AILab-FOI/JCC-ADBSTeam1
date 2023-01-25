@@ -3,19 +3,19 @@ import UserContext from "../../Context/UserContext";
 import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import {Table} from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
 
-function Contracts() {
+
+function Rent() {
+
     const user = useContext(UserContext);
 
     const [rows, setRows] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        async function fetchAllContracts() {
+        async function fetchAllRent() {
             setIsLoading(false);
-            await fetch(`http://localhost:10110/tenant/contracts/${user.user.OIB}`, {
-            //await fetch(`http://localhost:10110/tenant/contracts`, {
+            await fetch(`http://localhost:10110/tenant/rents/${user.user.OIB}`, {
                     method: "GET",
                     cache: "no-cache",
                     headers: {
@@ -27,36 +27,26 @@ function Contracts() {
                     setRows(json);
                 });
         }
-        if(isLoading) fetchAllContracts();
+        if(isLoading) fetchAllRent();
     })
-
-    let navigate = useNavigate();
-
-    function pushToUtilities(contractID) {
-        navigate(`/tenant/utilities/${contractID}`);
-    }
 
     return (
         <Container>
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th>#</th>
-                    <th>Check in</th>
-                    <th>Check out</th>
-                    <th>Rent rate</th>
-                    <th>Contract Date</th>
+                    <th>Property name </th>
+                    <th>Rent due date </th>
+                    <th>Rent paid</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {rows.map((contract, index) => {
+                    {rows.map((rent) => {
                         return (
-                            <tr onClick={()=>pushToUtilities(contract.contract_id)} key={contract.contract_id}>
-                                <td>{index + 1 }</td>
-                                <td>{contract.check_in}</td>
-                                <td>{contract.check_out}</td>
-                                <td>{contract.rent_rate}€</td>
-                                <td>{contract.contract_date}</td>
+                            <tr key={rent.contract_id}>
+                                <td>{rent.property_name}</td>
+                                <td>{rent.rent_due_date}</td>
+                                <td>{rent.rent_rate}€</td>
                             </tr>
                         )
                     })}
@@ -68,4 +58,4 @@ function Contracts() {
 
 }
 
-export default Contracts;
+export default Rent;
