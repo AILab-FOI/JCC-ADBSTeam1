@@ -1,8 +1,8 @@
 /* eslint-disable array-callback-return */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container } from "react-bootstrap";
-import {Table} from "react-bootstrap";
+import { Container, ListGroup } from "react-bootstrap";
+import {Table, Modal} from "react-bootstrap";
 
 
 function Utilities() {
@@ -14,6 +14,19 @@ function Utilities() {
     const [document, setDocument] = useState();
 
     const [isLoading, setIsLoading] = useState(true);
+
+    const [modalShow, setModalShow] = useState(false);
+    const [jsonIndex, setJsonIndex] = useState(0);
+
+    function handleClose() {
+        setModalShow(false);
+    }
+
+    function showModal(index) {
+        setJsonIndex(index);
+        setModalShow(true);
+
+    }
 
     useEffect(() => {
         async function fetchAllUtilities() {
@@ -111,22 +124,18 @@ function Utilities() {
                 <Table striped bordered hover>
                     <thead>
                         <tr>
-                        <th>#</th>
                         <th>Paid</th>
                         <th>Used</th>
                         <th>Left</th>
-                        <th>Used for</th>
                         </tr>
                     </thead>
                     <tbody>
                         {rows2.map((security, index) => {
                             return (
-                                <tr  key={security.amount_paid}>
-                                    <td>{index + 1 }</td>
+                                <tr key={security.amount_paid} onClick={() => showModal(index)}>
                                     <td>{security.amount_paid}€</td>
                                     <td>{security.amount_used}€</td>
-                                    <td>{security.amount_paid - security.amount_used}€</td>
-                                    
+                                    <td>{security.amount_paid - security.amount_used}€</td> 
                                 </tr>
                             )
                         })}
@@ -136,6 +145,25 @@ function Utilities() {
                 <Container style={{height: '500px', width:'85%'}} className="d-flex justify-content-center">
                     <embed style={{width: '100%'}} type="application/pdf" src={`data:application/pdf;base64,${document}`} />     
                 </Container>
+
+                { modalShow===true ? <Modal show={modalShow} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>
+                            Security deposit usage history
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <ListGroup>
+                            {
+                                rows2[jsonIndex].used_for_JSON.history.map((safety, index) => {
+                                    return (
+                                        <ListGroup.Item key={index}>{"For " + safety.on + " was used " + safety.amountUsed + "€."}</ListGroup.Item>
+                                    )
+                                })
+                            }
+                        </ListGroup>
+                    </Modal.Body>
+                </Modal> : <></>}
             </Container>
         )    
     }else{

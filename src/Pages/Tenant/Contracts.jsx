@@ -14,7 +14,6 @@ function Contracts() {
         async function fetchAllContracts() {
             setIsLoading(false);
             await fetch(`http://localhost:10110/tenant/contracts/${user.user.OIB}`, {
-            //await fetch(`http://localhost:10110/tenant/contracts`, {
                     method: "GET",
                     cache: "no-cache",
                     headers: {
