@@ -7,7 +7,7 @@ import {Table} from "react-bootstrap";
 
 function Utilities() {
 
-    let { tenantOIB } = '01949600419';
+    let { contractID } = useParams();
 
     const [rows, setRows] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -15,8 +15,7 @@ function Utilities() {
     useEffect(() => {
         async function fetchAllUtilities() {
             setIsLoading(false);
-            //await fetch(`http://localhost:10110/tenant/Utilities/${tenantOIB}`, {
-            await fetch(`http://localhost:10110/tenant/utilities`, {
+            await fetch(`http://localhost:10110/tenant/utilities/${contractID}`, {
                     method: "GET",
                     cache: "no-cache",
                     headers: {
@@ -37,10 +36,10 @@ function Utilities() {
                 <thead>
                     <tr>
                     <th>#</th>
-                    <th>Check in</th>
-                    <th>Check out</th>
-                    <th>Rent rate</th>
-                    <th>Contract Date</th>
+                    <th>amount_to_pay</th>
+                    <th>utility_due_date </th>
+                    <th> utility_paid</th>
+                    <th>utility_type_name</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,10 +47,10 @@ function Utilities() {
                         return (
                             <tr key={utilities.contract_id}>
                                 <td>{index + 1 }</td>
-                                <td>{utilities.check_in}</td>
-                                <td>{utilities.check_out}</td>
-                                <td>{utilities.rent_rate}</td>
-                                <td>{utilities.contract_date}</td>
+                                <td>{utilities.amount_to_pay}</td>
+                                <td>{utilities.utility_due_date}</td>
+                                <td>{utilities.utility_paid}</td>
+                                <td>{utilities.utility_type_name}</td>
                             </tr>
                         )
                     })}
