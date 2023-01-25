@@ -113,7 +113,7 @@ function Utilities() {
                                     <td>{security.amount_paid}€</td>
                                     <td>{security.amount_used}€</td>
                                     <td>{security.amount_paid - security.amount_used}€</td>
-                                    <td>{security.used_for_JSON}</td>
+                                    
                                 </tr>
                             )
                         })}

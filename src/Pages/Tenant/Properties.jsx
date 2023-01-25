@@ -19,7 +19,7 @@ function Properties() {
                     cache: "no-cache",
                     headers: {
                         'Content-type': 'application/json',
-                        Accept: 'application.json'
+                        Accept: 'application.json' 
                     },
                 }).then(res => res.json())
                 .then(json => {
