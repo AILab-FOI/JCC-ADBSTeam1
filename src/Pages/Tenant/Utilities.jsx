@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../../Context/UserContext";
+/* eslint-disable array-callback-return */
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import {Table} from "react-bootstrap";
@@ -11,6 +11,8 @@ function Utilities() {
 
     const [rows, setRows] = useState([]);
     const [rows2, setRows2] = useState([]);
+    const [document, setDocument] = useState();
+
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -36,9 +38,19 @@ function Utilities() {
                     },
                 }).then(res => res.json())
                 .then(json => {
-                    console.log(json);
                     setRows2(json);
                 });
+                await fetch(`http://localhost:10110/tenant/contracts/document/${contractID}`, {
+                    method: "GET",
+                    cache: "no-cache",
+                    headers: {
+                        'Content-type': 'application/json',
+                        Accept: 'application.json' 
+                    },
+                    }).then(res => res.json())
+                    .then(json => {
+                        setDocument(json.contract_document);
+                    });
         }
   
         if(isLoading){ 
@@ -49,6 +61,7 @@ function Utilities() {
 
         return (
             <Container>
+                 <h1>CONTRACT INFORMATION</h1>
                 <h3>UNPAID</h3>
                 <Table striped bordered hover>
                     <thead>
@@ -60,7 +73,7 @@ function Utilities() {
                     </thead>
                     <tbody>
                         {rows.map((utilities) => {
-                            if(utilities.utility_paid == '0')
+                            if(utilities.utility_paid === '0')
                             return (
                                 <tr key={utilities.contract_id}>
                                     <td>{utilities.amount_to_pay}€</td>
@@ -82,7 +95,7 @@ function Utilities() {
                     </thead>
                     <tbody>
                         {rows.map((utilities) => {
-                            if(utilities.utility_paid == '1')
+                            if(utilities.utility_paid === '1')
                             return (
                                 <tr key={utilities.contract_id}>
                                     <td>{utilities.amount_to_pay}€</td>
@@ -119,6 +132,10 @@ function Utilities() {
                         })}
                     </tbody>
                 </Table>
+                <h3>Contract review</h3> 
+                <Container style={{height: '500px', width:'85%'}} className="d-flex justify-content-center">
+                    <embed style={{width: '100%'}} type="application/pdf" src={`data:application/pdf;base64,${document}`} />     
+                </Container>
             </Container>
         )    
     }else{

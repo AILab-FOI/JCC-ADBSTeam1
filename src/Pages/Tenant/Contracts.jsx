@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../../Context/UserContext";
-import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import {Table} from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';

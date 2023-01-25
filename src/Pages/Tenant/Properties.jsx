@@ -1,15 +1,21 @@
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../../Context/UserContext";
+import { useEffect, useState } from "react";
 
 import { Container } from "react-bootstrap";
 import {Table} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Properties() {
 
+    let navigate = useNavigate();
+
     const [rows, setRows] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    function pushToSingleProperty(propertyId){
+        navigate(`/tenant/properties/${propertyId}`)
+    }
 
     useEffect(() => {
         async function fetchAllProperties() {
@@ -47,7 +53,7 @@ function Properties() {
                 <tbody>
                     {rows.map((property, index) => {
                         return (
-                            <tr key={property.property_id}>
+                            <tr key={property.property_id} onClick={() => pushToSingleProperty(property.property_id)}>
                                 <td>{index + 1 }</td>
                                 <td>{property.property_name}</td>
                                 <td>{property.description}</td>

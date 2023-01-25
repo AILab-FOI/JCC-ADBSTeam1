@@ -19,7 +19,6 @@ function Header() {
             alignItems: "center"
         }
     }
-    const user = useContext(UserContext);
 
     let navigate = useNavigate();
 
@@ -32,6 +31,9 @@ function Header() {
     }
     function pushToRents() {
         navigate(`/tenant/rents/`);
+    }
+    function pushToProperties() {
+        navigate(`/tenant/properties`)
     }
 
 
@@ -73,7 +75,7 @@ function Header() {
                                         Rent reports
                                     </NavDropdown.Item>
                                 </NavDropdown>
-                                <Nav.Link>
+                                <Nav.Link onClick={pushToProperties}>
                                     Available properties
                                 </Nav.Link>
                             </Nav>
