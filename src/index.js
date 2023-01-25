@@ -3,19 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import UserContext from './Context/UserContext';
 
-import { Provider } from 'react-redux';
-import store from "./Utils/ReduxStore";
-
-import Header from './Layouts/Header';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Header />
-      <App />
-    </Provider>
+    <App />
   </React.StrictMode>
 );
 
