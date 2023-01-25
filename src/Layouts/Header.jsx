@@ -26,6 +26,9 @@ function Header() {
         userState.setUser("");
         navigate("/login");
     }
+    function pushToContract() {
+        navigate("/tenant/contracts/");
+    }
 
     if(userState.user === "") {
         return (
@@ -56,7 +59,8 @@ function Header() {
                             <Nav className="me-auto">
                                 <Nav.Link>TENANT</Nav.Link>
                                 <NavDropdown title="My leases" id="leases-nav-dropdown">
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item
+                                    onClick={pushToContract}>
                                         Contracts
                                     </NavDropdown.Item>
                                     <NavDropdown.Item>
