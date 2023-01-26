@@ -1,0 +1,237 @@
+{
+    "history": [
+        {
+            "year": "2021",
+            "rents": [
+                {
+                    "from": "01.01.2021.",
+                    "to": "01.06.2021.",
+                    "tenantId": "1"
+                },
+                {
+                    "from": "01.06.2021.",
+                    "to": "31.12.2021.",
+                    "tenantId": "106"
+                }
+            ],
+            "utilites": [
+                {
+                    "month": "January",
+                    "total": "1923.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "23.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "900.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "February",
+                    "suma": "1720.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "10.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "700.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1010.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "March",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "April",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "May",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "June",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "July",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "August",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "September",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "October",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "November",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                },
+                {
+                    "month": "December",
+                    "suma": "1320.00",
+                    "utilities": [
+                        {
+                            "type": "electricity",
+                            "value": "20.00"
+                        },
+                        {
+                            "type": "gas",
+                            "value": "300.00"
+                        },
+                        {
+                            "type": "water",
+                            "value": "1000.00"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
