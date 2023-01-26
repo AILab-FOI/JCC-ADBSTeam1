@@ -35,6 +35,15 @@ function Header() {
     function pushToProperties() {
         navigate(`/tenant/properties`)
     }
+    function pushToPropertiesLandlord() {
+        navigate(`/landlord/properties`)
+    }
+    function pushToRentsLandlord() {
+        navigate(`/landlord/rents`)
+    }
+    function pushToUtilitiesLandlord(){
+        navigate(`/landlord/utilities`)
+    }
 
 
     if(userState.user === "") {
@@ -106,19 +115,13 @@ function Header() {
                             <Nav className="me-auto">
                                 <Nav.Link>LANDLORD</Nav.Link>
                                 <NavDropdown title="My Properties" id="properties-nav-dropdown">
-                                    <NavDropdown.Item>
-                                        Property history
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Item>
-                                        Leased properties
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item onClick={pushToPropertiesLandlord}>
                                         Available properties
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item onClick={pushToRentsLandlord}>
                                         Rent reports
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item>
+                                    <NavDropdown.Item onClick={pushToUtilitiesLandlord}>
                                         Utilities reports
                                     </NavDropdown.Item>
                                 </NavDropdown>
@@ -137,7 +140,7 @@ function Header() {
                     </Container>
                 </Navbar>
             </>
-        );
+        )
     }
 }
 

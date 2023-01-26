@@ -1,4 +1,7 @@
 import {Route, Routes} from "react-router-dom";
+import LandlordProperties from "../Pages/Landlord/LandlordProperties";
+import LandlordRent from "../Pages/Landlord/LandlordRent";
+import LandlordUtilities from "../Pages/Landlord/LandlordUtilities";
 import Login from "../Pages/Login";
 import Contracts from "../Pages/Tenant/Contracts";
 import Properties from "../Pages/Tenant/Properties";
@@ -15,6 +18,9 @@ function RenderRoute() {
             <Route path="/tenant/contracts/" element={<Contracts />} />
             <Route path="/tenant/utilities/:contractID" element={<Utilities />} />
             <Route path="/tenant/rents/" element={<Rent />} />
+            <Route path="/landlord/properties" element={<LandlordProperties />} />
+            <Route path="/landlord/rents" element={<LandlordRent />} />
+            <Route path="/landlord/utilities" element={<LandlordUtilities />} />
         </Routes>
     )
 
