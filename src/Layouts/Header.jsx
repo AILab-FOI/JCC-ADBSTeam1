@@ -116,7 +116,7 @@ function Header() {
                                 <Nav.Link>LANDLORD</Nav.Link>
                                 <NavDropdown title="My Properties" id="properties-nav-dropdown">
                                     <NavDropdown.Item onClick={pushToPropertiesLandlord}>
-                                        Available properties
+                                        Free and Leased
                                     </NavDropdown.Item>
                                     <NavDropdown.Item onClick={pushToRentsLandlord}>
                                         Rent reports
