@@ -1,10 +1,12 @@
-import {Container, Table, Button} from "react-bootstrap";
+import {Container, Table, Button, FormLabel, Form} from "react-bootstrap";
 import {useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getDateString } from "../../Utils/DateHelper";
+import { features } from "../../Utils/GetFeatures";
 
 function LeasedProperty() {
     let { propertyId } = useParams();
+    let navigate = useNavigate();
     function downloadHistory() {
         const JSONstring = `data:text/json;charset=utf-8,${encodeURIComponent(
             JSON.stringify(history)
@@ -19,7 +21,30 @@ function LeasedProperty() {
     const [history, setHistory] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [mainten, setMainten] = useState([]);
+    const [feat, setFeat] = useState();
+    const [value, setValue] = useState();
 
+    async function handleClick(e) {
+        e.preventDefault();
+        const reqBody = {
+            feat: e.target.form[0].value,
+            value: e.target.form[1].value,
+            property: propertyId
+        }
+
+        await fetch(`http://localhost:10110/feat/update`, {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                'Content-type': 'application/json',
+                Accept: 'application.json' 
+            },
+            body: JSON.stringify(reqBody)
+        }).then(res => res.json())
+        .then(json => {
+            navigate("/landlord/properties")
+        });
+    }
 
     useEffect(() => {
         async function getAllData() {
@@ -44,7 +69,6 @@ function LeasedProperty() {
                 },
             }).then(res => res.json())
             .then(json => {
-                console.log(json);
                 setMainten(JSON.parse(json));
             });
 
@@ -95,6 +119,28 @@ function LeasedProperty() {
                    })}
                 </tbody>
             </Table>}
+
+            <h4>
+                UPDATE FEATURE
+            </h4>
+            <Container>
+                <Form>
+                    <Form.Select>
+                        {
+                            features.map((feat, index) => {
+                                return (
+                                    <option id="optionForFeat" key={index} value={feat.value}>{feat.name}</option>
+                                )
+                            })
+                        }
+                    </Form.Select>
+                    <Form.Group className="mb-3" controlId="formInput">
+                        <Form.Label>Enter new value</Form.Label>
+                        <Form.Control name="feat"  placeholder="Enter new value"/>
+                    </Form.Group>
+                    <Button type="submit" onClick={handleClick}>Update feature</Button>
+                </Form>
+            </Container>
         </Container>
     )
 
