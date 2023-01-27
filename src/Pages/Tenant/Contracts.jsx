@@ -4,6 +4,8 @@ import { Container } from "react-bootstrap";
 import {Table} from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
+import { getDateString } from "../../Utils/DateHelper";
+
 function Contracts() {
     const user = useContext(UserContext);
 
@@ -51,10 +53,10 @@ function Contracts() {
                         return (
                             <tr onClick={()=>pushToUtilities(contract.contract_id)} key={contract.contract_id}>
                                 <td>{index + 1 }</td>
-                                <td>{contract.check_in}</td>
-                                <td>{contract.check_out}</td>
+                                <td>{getDateString(contract.check_in)}</td>
+                                <td>{getDateString(contract.check_out)}</td>
                                 <td>{contract.rent_rate}€</td>
-                                <td>{contract.contract_date}</td>
+                                <td>{getDateString(contract.contract_date)}</td>
                             </tr>
                         )
                     })}

@@ -16,7 +16,12 @@ function LandlordProperties() {
     const [isLoading, setIsLoading] = useState(true);
 
     function pushToSingleProperty(propertyId){
+        console.log("SP clicked");
         navigate(`/landlord/properties/${propertyId}`)
+    }
+
+    function pushToContractInsert(propertyId){
+        navigate(`/landlord/contract/insert/${propertyId}`)
     }
 
     useEffect(() => {
@@ -54,11 +59,11 @@ function LandlordProperties() {
                     </tr>
                 </thead>
                 <tbody>
-                    {rows.map((property) => {
+                    {rows.map((property, index) => {
                         if(property.status === 'free')
                         return (
                             
-                            <tr key={property.property_id}>
+                            <tr key={property.property_id} onClick={() => pushToContractInsert(rows[index].property_id)}>
                                 <td>{property.property_name}</td>
                                 <td>{property.description}</td>
                                 <td>{property.property_type}</td>
@@ -88,7 +93,7 @@ function LandlordProperties() {
                     {rows.map((property) => {
                         if(property.status !== 'free')
                         return (
-                            <tr key={property.property_id}>
+                            <tr key={property.property_id} onClick={() => pushToSingleProperty(property.property_id)}>
                                 <td>{property.property_name}</td>
                                 <td>{property.description}</td>
                                 <td>{property.property_type}</td>

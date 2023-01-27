@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../../Context/UserContext";
 import { Container } from "react-bootstrap";
 import {Table} from "react-bootstrap";
+import { getDateString } from "../../Utils/DateHelper";
 
 
 function Rent() {
@@ -44,7 +45,7 @@ function Rent() {
                         return (
                             <tr key={rent.contract_id}>
                                 <td>{rent.property_name}</td>
-                                <td>{rent.rent_due_date}</td>
+                                <td>{getDateString(rent.rent_due_date)}</td>
                                 <td>{rent.rent_rate}€</td>
                             </tr>
                         )

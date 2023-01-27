@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import {Table} from "react-bootstrap";
 
+import { getDateString } from "../../Utils/DateHelper";
+
 
 function LandlordUtilities() {
 
@@ -69,7 +71,7 @@ function LandlordUtilities() {
                                 <tr key={utilities.contract_id}>
                                     <td>{utilities.property_name}</td>
                                     <td>{utilities.amount_to_pay}€</td>
-                                    <td>{utilities.utility_due_date}</td>
+                                    <td>{getDateString(utilities.utility_due_date)}</td>
                                     <td>{utilities.utility_type_name}</td>
                                 </tr>
                             )
@@ -93,7 +95,7 @@ function LandlordUtilities() {
                                 <tr key={utilities.contract_id}>
                                     <td>{utilities.property_name}</td>
                                     <td>{utilities.amount_to_pay}€</td>
-                                    <td>{utilities.utility_due_date}</td>
+                                    <td>{getDateString(utilities.utility_due_date)}</td>
                                     <td>{utilities.utility_type_name}</td>
                                 </tr>
                             )

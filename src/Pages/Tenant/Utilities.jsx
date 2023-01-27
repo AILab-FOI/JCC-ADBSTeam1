@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, ListGroup } from "react-bootstrap";
 import {Table, Modal} from "react-bootstrap";
+import { getDateString } from "../../Utils/DateHelper";
 
 
 function Utilities() {
@@ -64,6 +65,17 @@ function Utilities() {
                     .then(json => {
                         setDocument(json.contract_document);
                     });
+                await fetch(`http://localhost:10110/tenant/reminder/${contractID}`, {
+                    method: "GET",
+                    cache: "no-cache",
+                    headers: {
+                        'Content-type': 'application/json',
+                        Accept: 'application.json' 
+                    },
+                    }).then(res => res.json())
+                    .then(json => {
+                        console.log(json);
+                    });
         }
   
         if(isLoading){ 
@@ -90,7 +102,7 @@ function Utilities() {
                             return (
                                 <tr key={utilities.contract_id}>
                                     <td>{utilities.amount_to_pay}€</td>
-                                    <td>{utilities.utility_due_date}</td>
+                                    <td>{getDateString(utilities.utility_due_date)}</td>
                                     <td>{utilities.utility_type_name}</td>
                                 </tr>
                             )
@@ -112,7 +124,7 @@ function Utilities() {
                             return (
                                 <tr key={utilities.contract_id}>
                                     <td>{utilities.amount_to_pay}€</td>
-                                    <td>{utilities.utility_due_date}</td>
+                                    <td>{getDateString(utilities.utility_due_date)}</td>
                                     <td>{utilities.utility_type_name}</td>
                                 </tr>
                             )
