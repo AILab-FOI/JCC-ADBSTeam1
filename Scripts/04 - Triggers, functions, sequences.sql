@@ -51,7 +51,7 @@ CREATE OR REPLACE FUNCTION update_utility_paid()
 RETURNS TRIGGER AS $$
 DECLARE
 BEGIN
-    UPDATE utility_report SET "utility_paid" = '0' WHERE rental_contract_id = NEW.rental_contract_id;
+    UPDATE utility_report SET "utility_paid" = '0' WHERE rental_contract_id = NEW.contract_id;
     RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
@@ -65,7 +65,7 @@ CREATE OR REPLACE FUNCTION insert_rent_report()
 RETURNS TRIGGER AS $$
 DECLARE
 BEGIN
-    INSERT INTO rent_report VALUES (NEW.rental_contract_id, (date_trunc('month', now()) + interval '1 month - 1 day')::date, '0');
+    INSERT INTO rent_report (rental_contract_id, rent_due_date, rent_paid) VALUES (NEW.contract_id, now()::date, '0');
     RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
@@ -107,4 +107,3 @@ BEGIN
     WHERE property.property_id = update_property_features.property_id;
 END;
 $$ LANGUAGE plpgsql;
-
